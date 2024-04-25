@@ -1,13 +1,16 @@
+from anuncio import Anuncio
+from error import ClassLargoExtendido
 
 
-
-class Campana():
+class Campana(Anuncio):
 
 
     def __init__(self, nombre, fecha_inicio, fecha_termino):
+        if len(nombre) > 250:
+            raise ClassLargoExtendido ('El nombre excede los 250 caracteres')
         self.__nombre = nombre
         self.__fecha_inicio = fecha_inicio
-        self.__fecha:fecha_termino = fecha_termino
+        self.__fecha_termino = fecha_termino
     
     @property
     def nombre(self):
@@ -29,5 +32,5 @@ class Campana():
     def fecha_termino(self, fecha_termino):
         self__fecha_termino = fecha_termino 
         
-    def __str__():
-        pass
+    def __str__(self):
+        return f'Nombre de la campaña {self.nombre}, Feecha de incio {self.fecha_inicio} Fecha de termino {self.fecha_termino}'

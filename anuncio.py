@@ -138,6 +138,11 @@ class Display(Anuncio):
     
     SUB_TIPOS = ("tradicional", "native")
     
+    def comprimir_anuncio(self):
+        print ('Compresión de vídeo no implementada aún')
+        
+    def redimensionar_anuncio(self):
+        print ('Recorte de vídeo no implementado aún')
     
 class Social(Anuncio):
     
@@ -145,3 +150,8 @@ class Social(Anuncio):
     
     SUB_TIPOS = ("facebook", "linkedin")
     
+    def comprimir_anuncio(self):
+        print ('Compresión de vídeo no implementada aún')
+        
+    def redimensionar_anuncio(self):
+        print ('Recorte de vídeo no implementado aún')

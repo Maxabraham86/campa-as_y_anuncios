@@ -84,7 +84,12 @@ class Anuncio(ABC):
     
     @sub_tipo.setter
     def sub_tipo(self, sub_tipo):
-        pass
+        if sub_tipo not in self.SUB_TIPOS:
+            raise SubTipoInvalidoError ('Subtipo invalido')
+        self.__sub_tipo = sub_tipo
+        
+        
+        
         '''
         if (isinstance(self,Video) and sub_tipo not in Video.SUB_TIPOS
         or isinstance(self,Display) and sub_tipo not in Display.SUB_TIPOS
@@ -98,13 +103,14 @@ class Anuncio(ABC):
 class Video(Anuncio):
     
     FORMATO = "Video"
-    
     SUB_TIPOS = ("instream", "outstream")
     
     def __init__(self, url_archivo, url_click, sub_tipo, duracion):
-        super().__init__(1,1,url_archivo, url_click, sub_tipo)
+        super().__init__(1,1,url_archivo, url_click, sub_tipo, duracion)
         self.__duracion = duracion if duracion > 0 else 5
         
+        if sub_tipo not in Video.SUB_TIPOS:
+            raise SubTipoInvalidoError (f' El subtipo indicado {sub_tipo} no esta permitido para este formato ')
     @property
     def ancho (self):
         return self.__ancho
@@ -125,6 +131,11 @@ class Video(Anuncio):
     @duracion.setter
     def duracion(self, duracion):
         self.__duracion = duracion if duracion > 0 else 5
+        
+    def mostrar_formatos(self):
+        print('formato video')
+        for x in Video.SUB_TIPOS:
+            print (f'-{x}')
     
     def comprimir_anuncio(self):
         print ('Compresión de vídeo no implementada aún')
@@ -137,6 +148,13 @@ class Display(Anuncio):
     FORMATO = "Display"
     
     SUB_TIPOS = ("tradicional", "native")
+    def __init__(self,url_archivo, url_click, sub_tipo):
+        super().__init__(url_archivo, url_click, sub_tipo,)
+        
+    def mostrar_formatos(self):
+        print('formato Display')
+        for d in Display.SUB_TIPOS:
+            print (f'-{d}')
     
     def comprimir_anuncio(self):
         print ('Compresión de vídeo no implementada aún')
@@ -149,6 +167,14 @@ class Social(Anuncio):
     FORMATO = "Social"
     
     SUB_TIPOS = ("facebook", "linkedin")
+    
+    def __init__(self,url_archivo, url_click, sub_tipo):
+        super().__init__(url_archivo, url_click, sub_tipo,)
+    def mostrar_formatos(self):
+        print('formato Social')
+        for s in Social.SUB_TIPOS:
+            print (f'-{s}')
+        
     
     def comprimir_anuncio(self):
         print ('Compresión de vídeo no implementada aún')

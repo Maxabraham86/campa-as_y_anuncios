@@ -10,14 +10,14 @@ class Campana():
         self.__nombre = nombre
         self.__fecha_inicio = fecha_inicio
         self.__fecha_termino = fecha_termino
-        self.anuncios =[]
+        self.__anuncios =[]
     
     @property
     def nombre(self):
         return self.__nombre
     @nombre.setter
     def nombre(self, nombre):
-        self__nombre = nombre    
+        self.__nombre = nombre    
         
     @property
     def fecha_inicio(self):
@@ -28,19 +28,19 @@ class Campana():
         
     def fecha_termino(self):
         return self.__fecha_termino
-    @fecha_termino.setter
-    def fecha_termino(self, fecha_termino):
-        self__fecha_termino = fecha_termino 
+    # @fecha_termino.setter
+    # def fecha_termino(self, fecha_termino):
+    #     self__fecha_termino = fecha_termino 
 
-    def crear_video(self, sub_tipo, url_archivo, url_click, duracion):
+    def crear_video(self, url_archivo, url_click, sub_tipo, duracion):
         v = Video(url_archivo, url_click,sub_tipo, duracion)
         self.__anuncios.append(v)
         
-    def crear_display(self, sub_tipo, url_archivo, url_click):
-        d = Display(url_archivo, url_click, sub_tipo)
-        self.__anunios.append(d)
-    def crear_social(self, sub_tipo, url_archivo, url_click):
-        s = Social(url_archivo, url_click, sub_tipo)
+    def crear_display(self, ancho, alto, url_archivo, url_click , sub_tipo):
+        d = Display(ancho, alto, url_archivo, url_click, sub_tipo)
+        self.__anuncios.append(d)
+    def crear_social(self, ancho, alto, url_archivo, url_click ,sub_tipo):
+        s = Social(ancho, alto, url_archivo, url_click, sub_tipo)
         self.__anuncios.append(s)
     def __str__(self):
         print (f'Nombre de la campaña {self.nombre}')
@@ -58,7 +58,7 @@ class Campana():
             if isinstance(anuncio, Social):
                 num_social += 1
                 
-                print(f' Hay {num_videos} en este anuncio')
+        return f' Hay {num_videos} en este anuncio'
                 
                 
                 

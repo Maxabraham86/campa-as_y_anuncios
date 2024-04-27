@@ -27,7 +27,7 @@ class Anuncio(ABC):
         pass
 
     @abstractmethod
-    def redimiencionar_anuncion(self):
+    def redimensionar_anuncio(self):
         pass
     
     
@@ -106,7 +106,7 @@ class Video(Anuncio):
     SUB_TIPOS = ("instream", "outstream")
     
     def __init__(self, url_archivo, url_click, sub_tipo, duracion):
-        super().__init__(1,1,url_archivo, url_click, sub_tipo, duracion)
+        super().__init__(1,1,url_archivo, url_click, sub_tipo)
         self.__duracion = duracion if duracion > 0 else 5
         
         if sub_tipo not in Video.SUB_TIPOS:
@@ -132,7 +132,7 @@ class Video(Anuncio):
     def duracion(self, duracion):
         self.__duracion = duracion if duracion > 0 else 5
         
-    def mostrar_formatos(self):
+    def mostrar_formatos():
         print('formato video')
         for x in Video.SUB_TIPOS:
             print (f'-{x}')
@@ -148,10 +148,10 @@ class Display(Anuncio):
     FORMATO = "Display"
     
     SUB_TIPOS = ("tradicional", "native")
-    def __init__(self,url_archivo, url_click, sub_tipo):
-        super().__init__(url_archivo, url_click, sub_tipo,)
+    def __init__(self,ancho, alto, url_archivo, url_click, sub_tipo):
+        super().__init__(ancho, alto, url_archivo, url_click, sub_tipo)
         
-    def mostrar_formatos(self):
+    def mostrar_formatos():
         print('formato Display')
         for d in Display.SUB_TIPOS:
             print (f'-{d}')
@@ -168,8 +168,8 @@ class Social(Anuncio):
     
     SUB_TIPOS = ("facebook", "linkedin")
     
-    def __init__(self,url_archivo, url_click, sub_tipo):
-        super().__init__(url_archivo, url_click, sub_tipo,)
+    def __init__(self,ancho, alto, url_archivo, url_click, sub_tipo):
+        super().__init__(ancho, alto, url_archivo, url_click, sub_tipo,)
     def mostrar_formatos(self):
         print('formato Social')
         for s in Social.SUB_TIPOS:

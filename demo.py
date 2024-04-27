@@ -7,20 +7,20 @@ c = Campana('ricomida', '2024-03-15', '2024-03-24')
 
 try:
 
-    c.crear_video('instream' , 'htpps://www.tupruebam4.cl' ,' htpps://www.tupruebam4.cl',05  )
+    c.crear_video('htpps://www.tupruebam4.cl' ,' htpps://www.tupruebam4.cl','instream' ,5  )
 except SubTipoInvalidoError as e:
     print (f'Error al agregar un video {e}')
     arch.write(f'Error al agregar un video {e}')
 
 
 try:
-    c.crear_display('native','htpps://www.tupruebam4.cl' ,' htpps://www.tupruebam4.cl')
+    c.crear_display(20,20 ,'htpps://www.tupruebam4.cl' ,' htpps://www.tupruebam4.cl','native')
 except SubTipoInvalidoError as e:
     print (f'Error al agregar un display {e}')
     arch.write(f'Error al agregar un display {e}')
     
 try:
-    c.crear_social('facebook','htpps://www.tupruebam4.cl' ,' htpps://www.tupruebam4.cl')
+    c.crear_social(15,24,'htpps://www.tupruebam4.cl' ,' htpps://www.tupruebam4.cl', 'facebook')
 except SubTipoInvalidoError as e:
     print (f'Error al agregar un display {e}')
     arch.write(f'Error al agregar un display {e}')
@@ -28,6 +28,7 @@ except SubTipoInvalidoError as e:
 print (c)
 # Cerramos el archivo
 arch.close()
+
 
 
 
